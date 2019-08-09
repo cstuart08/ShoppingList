@@ -19,6 +19,8 @@ class ItemController {
     
     init() {
         let fetchRequest: NSFetchRequest<Item> = Item.fetchRequest()
+        let sort = NSSortDescriptor(key: "name", ascending: true)
+        fetchRequest.sortDescriptors = [sort]
         
         let resultsController: NSFetchedResultsController<Item> = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: CoreDataStack.context, sectionNameKeyPath: nil, cacheName: nil)
         fetchedResultsController = resultsController

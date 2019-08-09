@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="7uO-GM-GK8">
     <device id="retina6_1" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -9,27 +9,27 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Table View Controller-->
+        <!--Shopping List-->
         <scene sceneID="4DT-Gj-HOp">
             <objects>
-                <tableViewController id="3fe-Da-Tes" sceneMemberID="viewController">
+                <tableViewController id="3fe-Da-Tes" customClass="ItemTableViewController" customModule="ShoppingList" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="hlW-2C-vUI">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="BrU-PH-cBA" customClass="ItemTableViewCell" customModule="ShoppingList" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="28" width="414" height="44"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="ItemCell" rowHeight="45" id="BrU-PH-cBA" customClass="ItemTableViewCell" customModule="ShoppingList" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="28" width="414" height="45"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="BrU-PH-cBA" id="x8O-Xf-EK3">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="44.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="TIn-cx-8Zj">
-                                            <rect key="frame" x="10" y="0.0" width="394" height="43.5"/>
+                                            <rect key="frame" x="10" y="0.0" width="394" height="44.5"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="38g-y5-h0R">
-                                                    <rect key="frame" x="0.0" y="11.5" width="340" height="20.5"/>
+                                                    <rect key="frame" x="0.0" y="12" width="340" height="20.5"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="340" id="YdO-QF-Ppi"/>
                                                     </constraints>
@@ -38,7 +38,11 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Jrt-lE-e0K">
-                                                    <rect key="frame" x="350" y="0.0" width="44" height="43.5"/>
+                                                    <rect key="frame" x="350" y="0.5" width="44" height="44"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="44" id="Ldv-Qy-pTh"/>
+                                                        <constraint firstAttribute="height" constant="44" id="loX-VN-1bs"/>
+                                                    </constraints>
                                                     <inset key="contentEdgeInsets" minX="4" minY="4" maxX="4" maxY="4"/>
                                                     <state key="normal" image="incomplete"/>
                                                     <connections>
@@ -66,15 +70,22 @@
                             <outlet property="delegate" destination="3fe-Da-Tes" id="ndQ-6f-FSq"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="gxl-M7-r6b"/>
+                    <navigationItem key="navigationItem" title="Shopping List" id="gxl-M7-r6b">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="1eH-iO-MQj">
+                            <connections>
+                                <action selector="addItemButtonTapped:" destination="3fe-Da-Tes" id="jGD-o7-PB9"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KER-jS-8ya" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1086.9565217391305" y="28.794642857142854"/>
+            <point key="canvasLocation" x="929" y="29"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="FYL-bf-aOM">
             <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="MiC-cU-Hwk" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="7uO-GM-GK8" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="6k9-fh-cwr">
@@ -86,7 +97,6 @@
                         <segue destination="3fe-Da-Tes" kind="relationship" relationship="rootViewController" id="n93-Xt-liS"/>
                     </connections>
                 </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="MiC-cU-Hwk" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="176.81159420289856" y="28.794642857142854"/>
         </scene>
